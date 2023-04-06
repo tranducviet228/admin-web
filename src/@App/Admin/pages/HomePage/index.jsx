@@ -32,9 +32,7 @@ const HomePage = (props) => {
                 <Typography variant="subtitle2" className="mb-12">
                   SALES
                 </Typography>
-                <Typography variant="h4" className="mb-40">
-                  アプリ登録者数
-                </Typography>
+
                 <ChartSale />
               </CardContent>
             </Card>
@@ -45,9 +43,7 @@ const HomePage = (props) => {
                 <Typography variant="subtitle2" className="mb-12">
                   OVERVIEW
                 </Typography>
-                <Typography variant="h4" className="mb-40">
-                  エントリー数
-                </Typography>
+
                 <ChartOverview />
               </CardContent>
             </Card>

@@ -13,15 +13,11 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { ROUTER_ADMIN } from './constants'
+import { ROUTER_ADMIN } from "./constants";
 
 export const menuAdminConfig = [
-	{
-		title: 'Trang chủ',
-		url: ROUTER_ADMIN.homePage
-	},
-	{
-		title: 'Quản lý user',
-		url: ROUTER_ADMIN.event.list
-	}
-]
+  {
+    title: "Trang chủ",
+    url: ROUTER_ADMIN.homePage,
+  },
+];

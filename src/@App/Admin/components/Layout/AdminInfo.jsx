@@ -8,6 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import PropTypes from "prop-types";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
 const AdminInfo = ({ color }) => {
   const navigate = useNavigate();
 
@@ -48,7 +49,7 @@ const AdminInfo = ({ color }) => {
         <Box
           sx={{
             width: { xs: "calc(100% - 62px)", xl: "calc(100% - 72px)" },
-            ml: 4,
+            ml: 2,
             // color: color
           }}
           className="user-info"
@@ -68,7 +69,7 @@ const AdminInfo = ({ color }) => {
                 whiteSpace: "nowrap",
                 fontSize: 16,
                 fontWeight: 700,
-                color: "inherit",
+                color: "black",
               }}
               component="span"
             >
@@ -89,7 +90,7 @@ const AdminInfo = ({ color }) => {
               mt: -0.5,
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
-              color: "inherit",
+              color: "black",
             }}
           >
             ADMIN
@@ -111,21 +112,10 @@ const AdminInfo = ({ color }) => {
           horizontal: "right",
         }}
       >
-        <MenuItem
-          onClick={() => {
-            handleClose();
-            navigate("/crm/my-profile");
-          }}
-          disableRipple
-        >
+        <MenuItem onClick={() => navigate("/admin/login")}>
           <ListItemIcon>
-            <Icon>manage_accounts</Icon>
-          </ListItemIcon>
-          <ListItemText>Thông tin tài khoản</ListItemText>
-        </MenuItem>
-        <MenuItem onClick={() => console.log("============= 123", 123)}>
-          <ListItemIcon>
-            <Icon>logout</Icon>
+            <LogoutIcon />
+            {/* <Icon>logout</Icon> */}
           </ListItemIcon>
           <ListItemText>Đăng xuất</ListItemText>
         </MenuItem>

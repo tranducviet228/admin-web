@@ -54,13 +54,13 @@ const AdminCmsLayout = (props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }} className="items-center ">
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
-        <Toolbar>
+        <Toolbar className="bg-white">
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -71,11 +71,11 @@ const AdminCmsLayout = (props) => {
             <MenuIcon />
           </IconButton>
           <img
-            className="mx-auto aspect-video"
+            className="aspect-video"
             style={{ height: "60px" }}
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgB80IUrYc7YRX8rQwNaU_DlAzPff0XsGTcw&usqp=CAU"
           />
-          <Box className="mr-auto">
+          <Box className="ml-auto">
             <Box
               sx={{
                 ml: { sm: 4 },
@@ -88,16 +88,16 @@ const AdminCmsLayout = (props) => {
             >
               <AdminInfo />
             </Box>
-            <Box>
+            {/* <Box>
               <Button
                 variant="outlined"
                 color="secondary"
-                // startIcon={<BiUserCircle />}
+                startIcon={<BiUserCircle />}
                 onClick={() => navigate("/cms/admin/login")}
               >
                 Đăng nhập
               </Button>
-            </Box>
+            </Box> */}
           </Box>
           {/* {isAuthenticated ? (
 						<Box
@@ -175,11 +175,12 @@ const AdminCmsLayout = (props) => {
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          backgroundColor: "#F4F7FE",
         }}
       >
         <Toolbar />
         <Box
-          className="admin-content flex flex-col h-full"
+          className="admin-content  h-full"
           sx={{ minHeight: `calc(100vh - 200px)` }}
         >
           <React.Suspense

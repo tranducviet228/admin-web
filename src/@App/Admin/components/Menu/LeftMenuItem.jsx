@@ -13,44 +13,60 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { Divider, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
-import React, { useState } from 'react'
-import { useLocation, useMatch, useMatches, useNavigate } from 'react-router-dom'
-import { needsToBeOpened } from './LeftMenuItemCollapse'
+import {
+  Divider,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import React, { useState } from "react";
+import {
+  useLocation,
+  useMatch,
+  useMatches,
+  useNavigate,
+} from "react-router-dom";
+import { needsToBeOpened } from "./LeftMenuItemCollapse";
 // import PropTypes from 'prop-types'
 const isMenuSelected = (matches = [], item) => {
-	return matches.find(i => i.pathname === item?.url) ?? null
-}
-const LeftMenuItem = props => {
-	const { item, sx } = props
+  return matches.find((i) => i.pathname === item?.url) ?? null;
+};
+const LeftMenuItem = (props) => {
+  const { item, sx } = props;
 
-	const navigate = useNavigate()
-	const { pathname } = useLocation()
-	const matches = useMatches()
-	const match = isMenuSelected(matches, item)
-	// console.log('============= match', match)
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const matches = useMatches();
+  const match = isMenuSelected(matches, item);
+  // console.log('============= match', match)
 
-	// console.log('============= matches', matches)
-	const handleClickMenu = url => {
-		if (url) navigate(url)
-	}
+  // console.log('============= matches', matches)
+  const handleClickMenu = (url) => {
+    if (url) navigate(url);
+  };
 
-	return (
-		<>
-			<ListItem disablePadding onClick={() => handleClickMenu(item?.url)} sx={sx} selected={Boolean(match)}>
-				<ListItemButton>
-					{item?.icon && <ListItemIcon>{item?.icon}</ListItemIcon>}
+  return (
+    <>
+      <ListItem
+        disablePadding
+        onClick={() => handleClickMenu(item?.url)}
+        sx={sx}
+        selected={Boolean(match)}
+      >
+        <ListItemButton>
+          {item?.icon && <ListItemIcon>{item?.icon}</ListItemIcon>}
 
-					<ListItemText primary={item.title} />
-				</ListItemButton>
-			</ListItem>
-			<Divider />
-		</>
-	)
-}
+          <ListItemText primary={item.title} />
+        </ListItemButton>
+      </ListItem>
+      <Divider />
+    </>
+  );
+};
 
 //LeftMenuItem.defaultProps = {}
 
 //LeftMenuItem.propTypes = {}
 
-export default React.memo(LeftMenuItem)
+export default React.memo(LeftMenuItem);

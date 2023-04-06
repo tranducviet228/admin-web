@@ -68,24 +68,6 @@ const LeftMenu = (props) => {
           return <LeftMenuItem key={index} item={item} />;
         })}
       </List>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            ログアウトしてもよろしいですか
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>キャンセル</Button>
-          <Button onClick={handleLogout} autoFocus>
-            ログアウト
-          </Button>
-        </DialogActions>
-      </Dialog>
     </Box>
   );
 };

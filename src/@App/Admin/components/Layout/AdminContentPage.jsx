@@ -28,7 +28,7 @@ import {
 const AdminContentPage = (props) => {
   const { content, pageTitle, headerAction, tabHeader } = props;
   return (
-    <Card className="shadow-4 h-full">
+    <Card className="shadow-4 h-full w-full">
       {pageTitle && (
         <CardHeader
           title={
