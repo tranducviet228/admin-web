@@ -14,10 +14,30 @@
  */
 
 import { ROUTER_ADMIN } from "./constants";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
+import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 
 export const menuAdminConfig = [
   {
     title: "Trang chủ",
     url: ROUTER_ADMIN.homePage,
+    icon: <HomeOutlinedIcon />,
+  },
+  {
+    title: "Quản lý user",
+    url: ROUTER_ADMIN.user.list,
+    icon: <GroupOutlinedIcon />,
+  },
+  {
+    title: "Quản lý danh mục",
+    url: ROUTER_ADMIN.category.list,
+    icon: <CategoryOutlinedIcon />,
+  },
+  {
+    title: "Quản lý file ảnh",
+    url: ROUTER_ADMIN.fileImage.list,
+    icon: <ImageOutlinedIcon />,
   },
 ];

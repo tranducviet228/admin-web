@@ -55,9 +55,9 @@ const LeftMenuItem = (props) => {
         selected={Boolean(match)}
       >
         <ListItemButton>
-          {item?.icon && <ListItemIcon>{item?.icon}</ListItemIcon>}
+          {item?.icon}
 
-          <ListItemText primary={item.title} />
+          <ListItemText primary={item.title} className="ml-2" />
         </ListItemButton>
       </ListItem>
       <Divider />

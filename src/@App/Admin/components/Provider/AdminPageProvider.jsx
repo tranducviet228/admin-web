@@ -13,18 +13,22 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 // import PropTypes from 'prop-types'
-const AdminPageContext = React.createContext()
+const AdminPageContext = React.createContext();
 
-export const useAdminPageContext = () => useContext(AdminPageContext)
+export const useAdminPageContext = () => useContext(AdminPageContext);
 
-const AdminPageProvider = props => {
-	return <AdminPageContext.Provider value={props}>{props.children}</AdminPageContext.Provider>
-}
+const AdminPageProvider = (props) => {
+  return (
+    <AdminPageContext.Provider value={props}>
+      {props.children}
+    </AdminPageContext.Provider>
+  );
+};
 
 //AdminPageProvider.defaultProps = {}
 
 //AdminPageProvider.propTypes = {}
 
-export default React.memo(AdminPageProvider)
+export default React.memo(AdminPageProvider);

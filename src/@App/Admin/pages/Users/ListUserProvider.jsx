@@ -13,37 +13,34 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
-import { spotSerivce } from '@App/Admin/services/spotService'
-import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
-import { useRequest } from 'ahooks'
-import React, { useEffect } from 'react'
+import { useRequest } from "ahooks";
+import React, { useEffect } from "react";
+import { userSerivce } from "../../services/userService";
+import AdminPageProvider from "../../components/Provider/AdminPageProvider";
+import useCoreTable from "../../../../@Core/components/Table/hooks/useCoreTable";
 // import PropTypes from 'prop-types'
 
-const ListUserProvider = props => {
-	const requestSpots = useRequest(spotSerivce.list, {
-		manual: true
-	})
+const ListUserProvider = (props) => {
+  const requestUsers = useRequest(userSerivce.list, {
+    manual: true,
+  });
 
-	const { run: getSpots } = requestSpots
+  const userTableHandler = useCoreTable(requestUsers);
 
-	const spotTableHandler = useCoreTable(requestSpots)
+  useEffect(() => {
+    userTableHandler.handleFetchData();
+  }, []);
 
-	useEffect(() => {
-		// spotTableHandler.handleFetchData()
-		getSpots()
-	}, [])
+  const data = {
+    userTableHandler,
+    ...props,
+  };
 
-	const data = {
-		spotTableHandler,
-		...props
-	}
-
-	return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>
-}
+  return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>;
+};
 
 //ListSpotProvider.defaultProps = {}
 
 //ListSpotProvider.propTypes = {}
 
-export default React.memo(ListUserProvider)
+export default React.memo(ListUserProvider);

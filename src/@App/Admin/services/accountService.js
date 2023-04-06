@@ -13,18 +13,18 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { env } from '@App/env'
-import BaseService from '@Core/api/BaseService'
+import { env } from "@App/env";
+import BaseService from "@Core/api/BaseService";
 
 class Account extends BaseService {
-	BASE_URL = env.CMS_BASE_URL
+  BASE_URL = env.CMS_BASE_URL;
 
-	BASE_ENDPOINT = '/api/resource/account'
+  BASE_ENDPOINT = "/api/resource/account";
 
-	constructor(params) {
-		super(params)
-		this.setRequest()
-	}
+  constructor(params) {
+    super(params);
+    this.setRequest();
+  }
 }
 
-export const accountSerivce = new Account()
+export const accountSerivce = new Account();

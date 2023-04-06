@@ -13,36 +13,30 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import React, { useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
-import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
-import AdminContentPage from '../../components/Layout/AdminContentPage'
-import { Box } from '@mui/system'
-import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import ListUserProvider from './ListUserProvider'
-import ListUserTable from './Components/ListUserTable'
-import { Button } from '@mui/material'
+import React, { useMemo } from "react";
+import AdminContentPage from "../../components/Layout/AdminContentPage";
+import ListUserProvider from "./ListUserProvider";
+import ListUserTable from "./Components/ListUserTable";
+import { Button } from "@mui/material";
 
-const ListUser = props => {
-	const { t } = useTranslation(TRANSLATE_ADMIN.user)
+const ListUser = (props) => {
+  return (
+    <ListUserProvider>
+      <AdminContentPage
+        pageTitle="Danh sách user"
+        headerAction={
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => console.log("============= navigate page add new")}
+          >
+            Thêm mới
+          </Button>
+        }
+        content={<ListUserTable />}
+      />
+    </ListUserProvider>
+  );
+};
 
-	return (
-		<ListUserProvider t={t}>
-			<AdminContentPage
-				pageTitle={t('title.list_user')}
-				headerAction={
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => console.log('============= navigate page add new')}
-					>
-						{t('common:btn.new')}
-					</Button>
-				}
-				content={<ListUserTable />}
-			/>
-		</ListUserProvider>
-	)
-}
-
-export default React.memo(ListUser)
+export default React.memo(ListUser);

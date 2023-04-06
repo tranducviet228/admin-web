@@ -13,10 +13,10 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { Box } from "@mui/system";
 import React from "react";
 import PropTypes from "prop-types";
 import {
+  Box,
   Button,
   Card,
   CardContent,
@@ -28,7 +28,7 @@ import {
 const AdminContentPage = (props) => {
   const { content, pageTitle, headerAction, tabHeader } = props;
   return (
-    <Card className="shadow-4 h-full w-full">
+    <Card className="w-full h-full shadow-4">
       {pageTitle && (
         <CardHeader
           title={

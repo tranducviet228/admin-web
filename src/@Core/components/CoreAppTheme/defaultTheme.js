@@ -19,7 +19,7 @@ import { lightBlue, red } from "@mui/material/colors";
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: "#fff",
+      main: "#0A8FDC",
     },
     secondary: {
       main: "#458C50",
@@ -83,6 +83,16 @@ const defaultTheme = createTheme({
     },
   },
   components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: "8px",
+          // boxShadow: '0px 5px 6px rgba(0, 0, 0, 0.04)',
+          textTransform: "capitalize",
+          // fontSize: 14
+        },
+      },
+    },
     // MuiTypography: {
     // 	styleOverrides: {
     // 		root: {

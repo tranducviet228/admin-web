@@ -62,7 +62,6 @@ const AdminCmsLayout = (props) => {
       >
         <Toolbar className="bg-white">
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
@@ -180,12 +179,12 @@ const AdminCmsLayout = (props) => {
       >
         <Toolbar />
         <Box
-          className="admin-content  h-full"
+          className="h-full admin-content"
           sx={{ minHeight: `calc(100vh - 200px)` }}
         >
           <React.Suspense
             fallback={
-              <div className="mt-200 text-center">
+              <div className="text-center mt-200">
                 <CircularProgress />
               </div>
             }

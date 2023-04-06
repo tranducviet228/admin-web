@@ -15,35 +15,35 @@
 
 // import { DEFAULT_PAGE_SIZE } from '@App/core/constants'
 
-import { DEFAULT_RESPONSE } from '@Core/api/BaseService'
-import { useCallback, useEffect, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useCallback, useEffect, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { DEFAULT_RESPONSE } from "../../../api/BaseService";
 // import { useConfirm } from '../../Confirm/CoreConfirm'
 
 let params = {
-	per_page: 10
-}
-const useCoreTable = requestFetchData => {
-	const { t } = useTranslation('common')
+  per_page: 10,
+};
+const useCoreTable = (requestFetchData) => {
+  const { t } = useTranslation("common");
 
-	const { data = DEFAULT_RESPONSE, loading, runAsync } = requestFetchData
+  const { data = DEFAULT_RESPONSE, loading, runAsync } = requestFetchData;
 
-	// const [queryUrl, setQueryUrl] = useUrlState()
-	const handleFetchData = useCallback(query => {
-		params = {
-			...params,
-			...query
-		}
-		return runAsync(params)
-	}, [])
+  // const [queryUrl, setQueryUrl] = useUrlState()
+  const handleFetchData = useCallback((query) => {
+    params = {
+      ...params,
+      ...query,
+    };
+    return runAsync(params);
+  }, []);
 
-	return {
-		...data,
-		pageIndex: data?.page - 1 ?? 0, //data?.current_page ? data?.current_page - 1 : 0,
-		pageSize: data?.per_page ?? 10,
-		loading,
-		handleFetchData
-	}
-}
+  return {
+    ...data,
+    pageIndex: data?.page - 1 ?? 0, //data?.current_page ? data?.current_page - 1 : 0,
+    pageSize: data?.per_page ?? 10,
+    loading,
+    handleFetchData,
+  };
+};
 
-export default useCoreTable
+export default useCoreTable;
