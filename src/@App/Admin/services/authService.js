@@ -18,7 +18,7 @@ class Auth extends BaseService {
   };
 
   login = (data) => {
-    const endpoint = "/api/resource/login";
+    const endpoint = "/api/auth/sign-in";
     return this.request.post(endpoint, data);
   };
 

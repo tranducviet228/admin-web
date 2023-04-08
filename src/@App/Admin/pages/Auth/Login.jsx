@@ -27,18 +27,18 @@ const renderFont = () => {
 const Login = () => {
   const navigate = useNavigate();
 
-  // set XSRF-TOKEN to cookies
-  const {
-    data: csrfData,
-    run: getCSRFData,
-    loading: loadingCSRFData,
-  } = useRequest(authService.csrf, {
-    manual: true,
-  });
+  // // set XSRF-TOKEN to cookies
+  // const {
+  //   data: csrfData,
+  //   run: getCSRFData,
+  //   loading: loadingCSRFData,
+  // } = useRequest(authService.csrf, {
+  //   manual: true,
+  // });
 
-  useEffect(() => {
-    getCSRFData();
-  }, []);
+  // useEffect(() => {
+  //   getCSRFData();
+  // }, []);
 
   const renderColor = () => {
     return (
@@ -73,13 +73,9 @@ const Login = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      const dataRequest = {
-        mail: data.username,
-        password: data.password,
-      };
-      // const res = await authService.login(dataRequest)
-      // await Cookies.set('CMS_ACCOUNT_INFO', JSON.stringify(res?.account_info))
-      await navigate(ROUTER_ADMIN.homePage);
+      const res = await authService.login(data);
+      await Cookies.set("CMS_ACCOUNT_INFO", JSON.stringify(res?.account_info));
+      // await navigate(ROUTER_ADMIN.homePage);
     } catch (e) {
       errorMsg("Invalid email or password");
       console.log("============= e", e);
