@@ -28,8 +28,6 @@ const AuthCmsLayout = (props) => {
   useEffect(() => {
     if (cmsInfor) {
       navigate(`/admin/home-page`);
-    } else {
-      navigate(`/admin/login`);
     }
   }, []);
   return (

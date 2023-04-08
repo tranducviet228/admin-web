@@ -21,7 +21,7 @@ import { DEFAULT_RESPONSE } from "../../../api/BaseService";
 // import { useConfirm } from '../../Confirm/CoreConfirm'
 
 let params = {
-  per_page: 10,
+  size: 10,
 };
 const useCoreTable = (requestFetchData) => {
   const { t } = useTranslation("common");
@@ -40,7 +40,7 @@ const useCoreTable = (requestFetchData) => {
   return {
     ...data,
     pageIndex: data?.page - 1 ?? 0, //data?.current_page ? data?.current_page - 1 : 0,
-    pageSize: data?.per_page ?? 10,
+    pageSize: data?.size ?? 10,
     loading,
     handleFetchData,
   };

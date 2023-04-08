@@ -43,10 +43,8 @@ const AdminCmsLayout = (props) => {
   // const xsrfToken = !!Cookies.get("XSRF-TOKEN");
 
   useEffect(() => {
-    if (cmsInfor) {
-      navigate(`/admin/home-page`);
-    } else {
-      navigate(`/admin/login`);
+    if (!cmsInfor) {
+      return navigate(`/admin/login`);
     }
   }, []);
 

@@ -16,7 +16,7 @@ export const DEFAULT_RESPONSE = {
   data: [],
   total: 0,
   page: 1,
-  per_page: 10,
+  size: 10,
 };
 class BaseService {
   BASE_URL = "/";
@@ -29,7 +29,7 @@ class BaseService {
 
   DEFAULT_LIMIT = 10;
 
-  DEFAULT_SORT = "updated_at desc";
+  DEFAULT_SORT = "updatedAt desc";
 
   ALL_ITEMS = 10000;
 
@@ -69,7 +69,7 @@ class BaseService {
     this.request = createInstance(this.BASE_URL, this.middleware);
     this.paramsGet = {
       page: this.DEFAULT_PAGE,
-      per_page: this.DEFAULT_LIMIT,
+      size: this.DEFAULT_LIMIT,
       sort: this.DEFAULT_SORT,
       // sort : this.DEFAULT_SORT,
     };

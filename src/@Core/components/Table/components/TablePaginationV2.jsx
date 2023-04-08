@@ -39,7 +39,7 @@ const TablePaginationV2 = (props) => {
     total,
     fetchData,
     last_page,
-    per_page,
+    size,
     current_page,
     params,
   } = props;
