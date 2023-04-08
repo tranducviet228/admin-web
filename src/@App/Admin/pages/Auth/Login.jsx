@@ -11,7 +11,7 @@ import Yup from "../../../../@Core/helper/Yup";
 import CoreInput from "../../../../@Core/components/Input/CoreInput";
 import { ROUTER_ADMIN } from "../../configs/constants";
 import { authService } from "../../services/authService";
-import { errorMsg } from "../../../../@Core/helper/Message";
+import { errorMsg, successMsg } from "../../../../@Core/helper/Message";
 
 const FontTitle = ({ variant = "h1", title = "" }) => {
   return (
@@ -74,10 +74,12 @@ const Login = () => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       const res = await authService.login(data);
-      await Cookies.set("CMS_ACCOUNT_INFO", JSON.stringify(res?.account_info));
-      // await navigate(ROUTER_ADMIN.homePage);
+
+      await Cookies.set("ACCOUNT_INFO", JSON.stringify(res));
+      await navigate(ROUTER_ADMIN.homePage);
+      successMsg("Đăng nhập thành công");
     } catch (e) {
-      errorMsg("Invalid email or password");
+      errorMsg("Tên tài khoản hoặc mật khẩu không đúng");
       console.log("============= e", e);
     }
   });
