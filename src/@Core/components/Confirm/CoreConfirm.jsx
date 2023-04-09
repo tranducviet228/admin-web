@@ -17,7 +17,6 @@ import { LoadingButton } from "@mui/lab";
 import Icon from "@mui/material/Icon";
 
 import { createContext, useCallback, useContext, useState } from "react";
-import { useTranslation } from "react-i18next";
 import CoreDialog from "../Dialog/CoreDialog";
 
 const ConfirmContext = createContext();
@@ -29,7 +28,6 @@ const useConfirm = function useConfirm() {
 };
 
 const CoreConfirmProvider = (props) => {
-  const { t } = useTranslation("common");
   const [config, setConfig] = useState({});
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -85,7 +83,7 @@ const CoreConfirmProvider = (props) => {
           <>
             {!config.hideCancelBtn && (
               <LoadingButton onClick={handleCancel}>
-                {config.cancelText ?? t("btn.cancel")}
+                {config.cancelText ?? "Hủy bỏ"}
               </LoadingButton>
             )}
             <LoadingButton
@@ -94,7 +92,7 @@ const CoreConfirmProvider = (props) => {
               variant="contained"
               onClick={handleOk}
             >
-              {config.okText ?? t("btn.submit")}
+              {config.okText ?? "Xác nhận"}
             </LoadingButton>
           </>
         }

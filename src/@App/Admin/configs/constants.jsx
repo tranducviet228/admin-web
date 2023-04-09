@@ -29,8 +29,7 @@ export const ROUTER_ADMIN = {
     list: basePath + "/category",
     edit: basePath + "/category/:id",
   },
-  fileImage: {
-    list: basePath + "/fileImage",
-    edit: basePath + "/fileImage/:id",
+  categoryLogo: {
+    list: basePath + "/category-logo",
   },
 };

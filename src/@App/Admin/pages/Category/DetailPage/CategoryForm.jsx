@@ -21,6 +21,7 @@ import CoreInput from "../../../../../@Core/components/Input/CoreInput";
 import { LoadingButton } from "@mui/lab";
 import CoreAutocomplete from "../../../../../@Core/components/Input/CoreAutocomplete";
 import SelectParentCategory from "./components/SelectParentCategory";
+import SelectCategoryLogo from "./components/SelectCategoryLogo";
 
 const CategoryForm = (props) => {
   const { isEdit } = props;
@@ -28,7 +29,10 @@ const CategoryForm = (props) => {
   const {
     control,
     formState: { isDirty, isSubmitting },
+    watch,
   } = methodForm;
+
+  const logoImage = watch("logoImage");
 
   return (
     <FormProvider>
@@ -64,6 +68,23 @@ const CategoryForm = (props) => {
             className="w-full px-8 mb-12 sm:w-1/2"
             returnValueType="enum"
           />
+          <Box className="w-full px-8 mb-12 space-x-8 sm:w-1/2 flex items-center">
+            <SelectCategoryLogo
+              control={control}
+              name="logoImage"
+              label="Logo danh mục"
+              placeholder="Chọn logo danh mục"
+              className="w-full sm:w-1/2"
+            />
+
+            {logoImage && (
+              <img
+                src={logoImage?.fileUrl}
+                style={{ width: "50px", height: "50px" }}
+                className="rounded-full"
+              />
+            )}
+          </Box>
 
           <CoreInput
             label="Mô tả"

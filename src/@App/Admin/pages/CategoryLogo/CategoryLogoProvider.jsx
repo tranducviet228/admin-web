@@ -15,27 +15,27 @@
 
 import { useRequest } from "ahooks";
 import React, { useEffect } from "react";
-import { userSerivce } from "../../../services/userService";
-import AdminPageProvider from "../../../components/Provider/AdminPageProvider";
-import useCoreTable from "../../../../../@Core/components/Table/hooks/useCoreTable";
-import { errorMsg, successMsg } from "../../../../../@Core/helper/Message";
+import { categoryLogoSerivce } from "../../services/logoCategoryService";
+import AdminPageProvider from "../../components/Provider/AdminPageProvider";
+import { errorMsg, successMsg } from "../../../../@Core/helper/Message";
+import useCoreTable from "../../../../@Core/components/Table/hooks/useCoreTable";
 // import PropTypes from 'prop-types'
 
-const UserProvider = (props) => {
-  const requestUsers = useRequest(userSerivce.list, {
+const CategoryLogoProvider = (props) => {
+  const requestLogoCategory = useRequest(categoryLogoSerivce.list, {
     manual: true,
-    onError: () => errorMsg("Lấy danh sách user thất bại"),
+    onError: () => errorMsg("Lấy danh sách logo danh mục thu chi thất bại"),
   });
 
-  const tableHandler = useCoreTable(requestUsers);
+  const tableHandler = useCoreTable(requestLogoCategory);
 
   const handleDelete = async (id) => {
     try {
-      await userSerivce.delete(id);
-      successMsg("Xóa user thành công");
+      await categoryLogoSerivce.delete(id);
+      successMsg("Xóa logo thành công");
       tableHandler.handleFetchData();
     } catch (error) {
-      errorMsg("Xóa user thất bại");
+      errorMsg("Xóa logo thất bại");
     }
   };
 
@@ -52,4 +52,4 @@ const UserProvider = (props) => {
   return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>;
 };
 
-export default React.memo(UserProvider);
+export default React.memo(CategoryLogoProvider);

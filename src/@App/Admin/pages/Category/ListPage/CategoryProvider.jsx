@@ -31,7 +31,7 @@ const CategoryProvider = (props) => {
   const tableHandler = useCoreTable(requestCategory);
 
   useEffect(() => {
-    tableHandler.handleFetchData();
+    tableHandler.handleFetchData({ parentId: 0 });
   }, []);
 
   const data = {

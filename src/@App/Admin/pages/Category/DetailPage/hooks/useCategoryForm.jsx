@@ -32,7 +32,8 @@ export const useCategoryForm = (props) => {
       description: category?.description ?? "",
       categoryType: category?.categoryType ?? null,
       parentId: category?.parentId ?? null,
-      logoImageID: category?.logoImageID ?? 1,
+      logoImageID: category?.logoImageID ?? null,
+      logoImage: category?.logoImage ?? null,
     },
     resolver: yupResolver(
       Yup.object({
@@ -46,6 +47,7 @@ export const useCategoryForm = (props) => {
 
   const onSubmit = methodForm.handleSubmit(
     async (data) => {
+      data.logoImageID = data.logoImage?.id;
       try {
         await categorySerivce.save(data);
         navigate("/admin/category");

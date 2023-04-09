@@ -28,7 +28,7 @@ import { ROUTER_ADMIN } from "../../../../configs/constants";
 
 const UserTable = (props) => {
   const navigate = useNavigate();
-  const { tableHandler } = useAdminPageContext();
+  const { tableHandler, handleDelete } = useAdminPageContext();
 
   const RoleOptions = [
     { value: "ROLE_ADMIN", label: "Quyền Admin" },
@@ -81,6 +81,7 @@ const UserTable = (props) => {
               />
               <CoreActionDelete
                 disabled={data?.roles?.find((i) => i?.name === "ROLE_ADMIN")}
+                onConfirmDelete={() => handleDelete(data?.id)}
               />
             </div>
           );

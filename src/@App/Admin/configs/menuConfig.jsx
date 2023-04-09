@@ -37,7 +37,7 @@ export const menuAdminConfig = [
   },
   {
     title: "Quản lý logo danh mục",
-    url: ROUTER_ADMIN.fileImage.list,
+    url: ROUTER_ADMIN.categoryLogo.list,
     icon: <ImageOutlinedIcon />,
   },
 ];

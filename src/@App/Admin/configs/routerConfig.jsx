@@ -23,6 +23,8 @@ const LazyCategoryDetail = React.lazy(() =>
   import("../pages/Category/DetailPage")
 );
 
+const LazyLogoCategoryList = React.lazy(() => import("../pages/CategoryLogo"));
+
 // auth
 const LazyLogin = React.lazy(() => import("../pages/Auth/Login"));
 
@@ -53,5 +55,9 @@ export const routerAdminConfig = [
   {
     path: ROUTER_ADMIN.category.edit,
     element: <LazyCategoryDetail />,
+  },
+  {
+    path: ROUTER_ADMIN.categoryLogo.list,
+    element: <LazyLogoCategoryList />,
   },
 ];
