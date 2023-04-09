@@ -13,27 +13,17 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import React, { useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
-import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
-import AdminContentPage from '../../components/Layout/AdminContentPage'
-import { Box } from '@mui/system'
-import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import ListUserProvider from './ListUserProvider'
-import EditUserForm from './Components/EditUserForm'
-import { Button } from '@mui/material'
+import React from "react";
+import AdminContentPage from "../../components/Layout/AdminContentPage";
+import ListUserProvider from "./ListUserProvider";
+import EditUserForm from "./Components/EditUserForm";
 
-const EditUser = props => {
-	const { t } = useTranslation(TRANSLATE_ADMIN.user)
+const EditUser = (props) => {
+  return (
+    <ListUserProvider>
+      <AdminContentPage pageTitle="Thêm mới user" content={<EditUserForm />} />
+    </ListUserProvider>
+  );
+};
 
-	return (
-		<ListUserProvider t={t}>
-			<AdminContentPage
-				pageTitle={t('title.list_user')}
-				content={<EditUserForm />}
-			/>
-		</ListUserProvider>
-	)
-}
-
-export default React.memo(EditUser)
+export default React.memo(EditUser);

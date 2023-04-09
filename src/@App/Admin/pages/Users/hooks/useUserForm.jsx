@@ -13,42 +13,40 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { errorMsg, successMsg } from '@Core/helper/Message'
-import Yup, { yupResolver } from '@Core/helper/Yup'
-import { useForm } from 'react-hook-form'
+import { useForm } from "react-hook-form";
+import { errorMsg, successMsg } from "../../../../../@Core/helper/Message";
+import { yupResolver } from "@hookform/resolvers/yup";
+import Yup from "../../../../../@Core/helper/Yup";
 
 export const useUserForm = () => {
-	const methodForm = useForm({
-		mode: 'onTouched',
-		defaultValues: {
-			email: '',
-			firstname: '',
-			lastname: '',
-			gender: '',
-			address: '',
-			image: ''
-		},
-		resolver: yupResolver(
-			Yup.object({
-				email: Yup.string().required().email(),
-				firstname: Yup.string().required(),
-				lastname: Yup.string().required(),
-				image: Yup.string().required()
-			})
-		)
-	})
+  const methodForm = useForm({
+    mode: "onTouched",
+    defaultValues: {
+      email: "",
+      username: "",
+      password: "",
+      roles: [],
+    },
+    resolver: yupResolver(
+      Yup.object({
+        email: Yup.string().required().email(),
+        username: Yup.string().required(),
+        password: Yup.string().required(),
+      })
+    ),
+  });
 
-	const onSubmit = methodForm.handleSubmit(
-		async data => {
-			try {
-				console.log('============= data', data)
-				successMsg('Create user successfully')
-			} catch (e) {
-				errorMsg(e)
-			}
-		},
-		error => console.log('============= error', error)
-	)
+  const onSubmit = methodForm.handleSubmit(
+    async (data) => {
+      try {
+        console.log("============= data", data);
+        successMsg("Create user successfully");
+      } catch (e) {
+        errorMsg(e);
+      }
+    },
+    (error) => console.log("============= error", error)
+  );
 
-	return { methodForm, onSubmit }
-}
+  return { methodForm, onSubmit };
+};

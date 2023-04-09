@@ -41,7 +41,7 @@ const AdminContentPage = (props) => {
       )}
       <Box>{tabHeader}</Box>
       <Divider />
-      <Box className="my-8">{content}</Box>
+      <Box className="mx-12 my-8">{content}</Box>
     </Card>
   );
 };

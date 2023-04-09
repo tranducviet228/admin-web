@@ -13,17 +13,10 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import {
-  FormHelperText,
-  InputLabel,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, FormHelperText, TextField } from "@mui/material";
+import PropTypes from "prop-types";
 import React from "react";
 import { useController } from "react-hook-form";
-import PropTypes from "prop-types";
-import clsx from "clsx";
 
 const CoreInput = (props) => {
   const {
@@ -31,33 +24,31 @@ const CoreInput = (props) => {
     control,
     name,
     label,
-    labelStyle,
     placeholder,
     InputLabelProps,
     inputProps,
     InputProps,
     required,
-    showTextRequired = true,
     readOnly,
     type,
     multiline,
     minRows,
     hidden,
     helperText,
-    allowTranslation,
     disabled,
     rules,
     defaultValue,
     ...restProps
   } = props;
+
   const {
-    field: { onChange, onBlur, value, ref },
+    field: { value, onBlur, onChange, ref },
     fieldState: { error },
   } = useController({
-    control,
     name,
-    defaultValue,
+    control,
     rules,
+    defaultValue,
   });
 
   let { transform } = props;
@@ -72,36 +63,12 @@ const CoreInput = (props) => {
     };
   }
 
-  const renderLabel = () => {
-    return (
-      <Typography
-        variant="body2"
-        className={clsx("flex items-center", labelStyle)}
-      >
-        {showTextRequired && (
-          <Typography
-            className={clsx(
-              "text-black py-4 px-16 rounded-4 w-60  mx-8",
-              required ? "bg-yellow" : "bg-white"
-            )}
-          >
-            {required ? "必須" : ""}
-          </Typography>
-        )}
-        {label}
-      </Typography>
-    );
-  };
-
   return (
-    <Box
-      className={clsx("admin-input flex flex-wrap sm:flex-nowrap", className)}
-    >
-      {label != null ? renderLabel() : ""}
+    <Box className={className}>
       <TextField
         fullWidth
         type={type === "number" ? "text" : type}
-        // label={renderLabel()}
+        label={label}
         placeholder={placeholder}
         onChange={(e) => onChange(transform.output(e))}
         onBlur={onBlur}
@@ -111,6 +78,7 @@ const CoreInput = (props) => {
         minRows={minRows}
         disabled={disabled}
         error={!!error}
+        helperText={error && error.message}
         InputLabelProps={{
           shrink: placeholder ? true : undefined,
           required,
@@ -123,15 +91,11 @@ const CoreInput = (props) => {
         // eslint-disable-next-line react/jsx-no-duplicate-props
         InputProps={{
           ...InputProps,
-          // ...(type === 'number' && {
-          // 	inputComponent: NumberFormatCustom
-          // })
         }}
         {...restProps}
       />
-      {helperText && <FormHelperText>{helperText}</FormHelperText>}
-      {error && error.message && (
-        <FormHelperText error>{error.message}</FormHelperText>
+      {helperText && (
+        <FormHelperText className="text-10">{helperText}</FormHelperText>
       )}
     </Box>
   );
@@ -153,7 +117,7 @@ CoreInput.defaultProps = {
   multiline: false,
   minRows: 5,
   disabled: false,
-  allowTranslation: false,
+  // allowTranslation: false
 };
 
 CoreInput.propTypes = {
@@ -175,7 +139,7 @@ CoreInput.propTypes = {
   hidden: PropTypes.bool,
   helperText: PropTypes.any,
   rules: PropTypes.object,
-  allowTranslation: PropTypes.bool,
+  // allowTranslation: PropTypes.bool
 };
 
 export default React.memo(CoreInput);

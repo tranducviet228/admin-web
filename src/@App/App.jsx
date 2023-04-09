@@ -21,9 +21,11 @@ import { appRouterConfig } from "./appConfig";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
-import withAppProviders from "./withAppProviders";
 import { CoreConfirmProvider } from "../@Core/components/Confirm/CoreConfirm";
+import { useYupChangeLocale } from "../@Core/helper/Yup";
 const App = (props) => {
+  useYupChangeLocale();
+
   return (
     <CoreAppTheme>
       <CoreConfirmProvider>

@@ -18,8 +18,10 @@ import AdminContentPage from "../../components/Layout/AdminContentPage";
 import ListUserProvider from "./ListUserProvider";
 import ListUserTable from "./Components/ListUserTable";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const ListUser = (props) => {
+  const navigate = useNavigate();
   return (
     <ListUserProvider>
       <AdminContentPage
@@ -28,7 +30,7 @@ const ListUser = (props) => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => console.log("============= navigate page add new")}
+            onClick={() => navigate("/admin/user/new")}
           >
             Thêm mới
           </Button>
