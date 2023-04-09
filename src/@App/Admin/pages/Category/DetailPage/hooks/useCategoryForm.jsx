@@ -31,7 +31,7 @@ export const useCategoryForm = (props) => {
       name: category?.name ?? "",
       description: category?.description ?? "",
       categoryType: category?.categoryType ?? null,
-      parentId: category?.parentId ?? null,
+      parentId: category?.parentId ?? 0,
       logoImageID: category?.logoImageID ?? null,
       logoImage: category?.logoImage ?? null,
     },
