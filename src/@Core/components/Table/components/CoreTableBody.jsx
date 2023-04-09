@@ -22,6 +22,8 @@ import CoreTableCell from "./CoreTableCell";
 const CoreTableBody = ({ table, loading }) => {
   const renderRows = () => {
     const { rows } = table.getRowModel();
+
+    console.log("============= rows", rows);
     const allColumns = table.getAllColumns();
     if (rows.length === 0) {
       return (

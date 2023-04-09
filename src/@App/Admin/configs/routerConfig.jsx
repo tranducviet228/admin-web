@@ -16,8 +16,8 @@ import React from "react";
  */
 
 const LazyHomePage = React.lazy(() => import("../pages/HomePage"));
-const LazyUserList = React.lazy(() => import("../pages/Users/ListUser"));
-const LazyUserDetail = React.lazy(() => import("../pages/Users/EditUser"));
+const LazyUserList = React.lazy(() => import("../pages/Users/ListPage"));
+const LazyUserDetail = React.lazy(() => import("../pages/Users/DetailPage"));
 
 // auth
 const LazyLogin = React.lazy(() => import("../pages/Auth/Login"));

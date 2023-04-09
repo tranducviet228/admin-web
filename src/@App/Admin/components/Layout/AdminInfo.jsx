@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
+import Cookies from "js-cookie";
 const AdminInfo = ({ color }) => {
   const navigate = useNavigate();
 
@@ -20,6 +21,15 @@ const AdminInfo = ({ color }) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = async () => {
+    // Remove all Cookie
+    Object.keys(Cookies.get()).forEach(function (cookieName) {
+      var neededAttributes = {};
+      Cookies.remove(cookieName, neededAttributes);
+    });
+    await navigate(`/admin/login`);
   };
 
   return (
@@ -112,7 +122,7 @@ const AdminInfo = ({ color }) => {
           horizontal: "right",
         }}
       >
-        <MenuItem onClick={() => navigate("/admin/login")}>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <LogoutIcon />
             {/* <Icon>logout</Icon> */}

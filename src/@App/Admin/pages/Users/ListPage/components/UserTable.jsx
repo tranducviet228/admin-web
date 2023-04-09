@@ -15,15 +15,17 @@
 
 import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAdminPageContext } from "../../../components/Provider/AdminPageProvider";
+import { useAdminPageContext } from "../../../../components/Provider/AdminPageProvider";
 import CoreTable, {
   columnHelper,
-} from "../../../../../@Core/components/Table/CoreTable";
+} from "../../../../../../@Core/components/Table/CoreTable";
 import { Box } from "@mui/material";
 
-const ListUserTable = (props) => {
+const UserTable = (props) => {
   const navigate = useNavigate();
   const { userTableHandler } = useAdminPageContext();
+
+  console.log("============= userTableHandler", userTableHandler);
   const columns = useMemo(() => {
     return [
       columnHelper.accessor("id", {
@@ -68,12 +70,6 @@ const ListUserTable = (props) => {
   return (
     <Box>
       <CoreTable isShowPagination columns={columns} {...userTableHandler} />
-      {/* <Box className="flex justify-end">
-				<TextField type="file"/>
-				<Button variant="contained" color="primary" className="ml-[2px]" >
-					{t('btn.upload')}
-				</Button>
-			</Box> */}
     </Box>
   );
 };
@@ -82,4 +78,4 @@ const ListUserTable = (props) => {
 
 //ListSpotTable.propTypes = {}
 
-export default React.memo(ListUserTable);
+export default React.memo(UserTable);

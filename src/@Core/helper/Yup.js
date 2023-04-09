@@ -21,6 +21,7 @@ const REGEX = {
   PASSWORD:
     /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/,
   EMAIL: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+  PHONE: /(84|0[3|5|7|8|9])+([0-9]{8})\b/g,
 };
 
 Yup.addMethod(
@@ -39,6 +40,17 @@ Yup.addMethod(
   "email",
   function (errorMessage = "Không đúng định dạng email") {
     return this.matches(REGEX.EMAIL, {
+      message: errorMessage,
+      excludeEmptyString: true,
+    });
+  }
+);
+
+Yup.addMethod(
+  Yup.string,
+  "phone",
+  function (errorMessage = "Số điện thoại sai định dạng") {
+    return this.matches(REGEX.PHONE, {
       message: errorMessage,
       excludeEmptyString: true,
     });

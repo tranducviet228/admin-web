@@ -34,17 +34,19 @@ import AdminInfo from "./AdminInfo";
 const drawerWidth = 240;
 
 const AdminCmsLayout = (props) => {
-  const navigate = useNavigate();
-  const cmsInfor = !!Cookies.get("CMS_ACCOUNT_INFO");
-  const xsrfToken = !!Cookies.get("XSRF-TOKEN");
-
-  // useEffect(() => {
-  // 	if (!cmsInfor || !xsrfToken) {
-  // 		return navigate(`/cms/admin/login`)
-  // 	}
-  // }, [])
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const cmsInfor = Cookies.get("ACCOUNT_INFO");
+
+  // const xsrfToken = !!Cookies.get("XSRF-TOKEN");
+
+  useEffect(() => {
+    if (!cmsInfor) {
+      return navigate(`/admin/login`);
+    }
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);

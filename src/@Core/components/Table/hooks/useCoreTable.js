@@ -16,31 +16,33 @@
 // import { DEFAULT_PAGE_SIZE } from '@App/core/constants'
 
 import { useCallback, useEffect, useMemo } from "react";
-import { useTranslation } from "react-i18next";
 import { DEFAULT_RESPONSE } from "../../../api/BaseService";
 // import { useConfirm } from '../../Confirm/CoreConfirm'
 
 let params = {
-  per_page: 10,
+  size: 10,
 };
 const useCoreTable = (requestFetchData) => {
-  const { t } = useTranslation("common");
-
-  const { data = DEFAULT_RESPONSE, loading, runAsync } = requestFetchData;
+  const { data, loading, run } = requestFetchData;
 
   // const [queryUrl, setQueryUrl] = useUrlState()
-  const handleFetchData = useCallback((query) => {
-    params = {
-      ...params,
-      ...query,
-    };
-    return runAsync(params);
-  }, []);
+  const handleFetchData = useCallback(
+    (query) => {
+      console.log("============= 123", 123);
+      return run({
+        ...params,
+        ...query,
+      });
+    },
+    [params]
+  );
 
   return {
     ...data,
-    pageIndex: data?.page - 1 ?? 0, //data?.current_page ? data?.current_page - 1 : 0,
-    pageSize: data?.per_page ?? 10,
+    data: data?.content ?? [],
+    total: data?.totalRecord,
+    pageIndex: data?.pageNumber ?? 1, //data?.current_page ? data?.current_page - 1 : 0,
+    pageSize: data?.pageSize ?? 10,
     loading,
     handleFetchData,
   };

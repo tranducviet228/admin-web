@@ -23,6 +23,7 @@ const CoreTable = ({
   isShowPagination = false,
   pageSize = 10,
   pageIndex = 1,
+  pageNumber = 1,
   handleFetchData = () => {},
   loading = false,
   hasRowSelection = false,
@@ -35,6 +36,8 @@ const CoreTable = ({
   const { columnSelection, rowSelection, setRowSelection } = useTableSelection({
     hasRowSelection,
   });
+
+  console.log("============= data", data);
   const pagination = React.useMemo(
     () => ({
       pageIndex,
@@ -61,11 +64,6 @@ const CoreTable = ({
     manualPagination: true,
     debugTable: true,
   });
-
-  // useUpdateEffect(() => {
-  // 	const originalRow = table.getSelectedRowModel().flatRows.map(row => row.original)
-  // 	onRowSelectionChange(originalRow)
-  // }, [rowSelection])
 
   return (
     <CoreTableContext.Provider
@@ -99,6 +97,7 @@ const CoreTable = ({
         <TablePaginationV2
           pageIndex={pageIndex}
           pageSize={pageSize}
+          pageNumber={pageNumber}
           total={total}
           fetchData={handleFetchData}
           {...restProps}

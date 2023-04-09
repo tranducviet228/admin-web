@@ -15,12 +15,13 @@
 
 import { useRequest } from "ahooks";
 import React, { useEffect } from "react";
-import { userSerivce } from "../../services/userService";
-import AdminPageProvider from "../../components/Provider/AdminPageProvider";
-import useCoreTable from "../../../../@Core/components/Table/hooks/useCoreTable";
+import { userSerivce } from "../../../services/userService";
+import AdminPageProvider from "../../../components/Provider/AdminPageProvider";
+import useCoreTable from "../../../../../@Core/components/Table/hooks/useCoreTable";
 // import PropTypes from 'prop-types'
 
-const ListUserProvider = (props) => {
+const UserProvider = (props) => {
+  console.log("============= provider");
   const requestUsers = useRequest(userSerivce.list, {
     manual: true,
   });
@@ -39,8 +40,4 @@ const ListUserProvider = (props) => {
   return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>;
 };
 
-//ListSpotProvider.defaultProps = {}
-
-//ListSpotProvider.propTypes = {}
-
-export default React.memo(ListUserProvider);
+export default React.memo(UserProvider);

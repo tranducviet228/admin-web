@@ -13,59 +13,59 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import Axios from 'axios'
-import { pickBy } from 'lodash'
-import Qs from 'qs'
+import Axios from "axios";
+import { pickBy } from "lodash";
+import Qs from "qs";
 export const createInstance = (baseUrl = null, middleware = () => {}) => {
-	const options = {
-		baseURL: baseUrl,
-		timeout: 30000,
-		headers: {
-			'X-Requested-With': 'XMLHttpRequest'
-		},
-		withCredentials: true,
-		paramsSerializer(params) {
-			params = pickBy(params, val => {
-				return val !== null && val !== '' && val !== 'undefined'
-			})
-			return Qs.stringify(params)
-		}
-	}
+  const options = {
+    baseURL: baseUrl,
+    timeout: 30000,
+    headers: {
+      "X-Requested-With": "XMLHttpRequest",
+    },
+    // withCredentials: true,
+    paramsSerializer(params) {
+      params = pickBy(params, (val) => {
+        return val !== null && val !== "" && val !== "undefined";
+      });
+      return Qs.stringify(params);
+    },
+  };
 
-	const instance = Axios.create(options)
+  const instance = Axios.create(options);
 
-	instance.interceptors.request.use(
-		async requestConfig => {
-			await Promise.all(middleware(requestConfig))
-			return requestConfig
-		},
-		requestError => {
-			// console.log(requestError)
-			return Promise.reject(requestError)
-		}
-	)
+  instance.interceptors.request.use(
+    async (requestConfig) => {
+      await Promise.all(middleware(requestConfig));
+      return requestConfig;
+    },
+    (requestError) => {
+      // console.log(requestError)
+      return Promise.reject(requestError);
+    }
+  );
 
-	// Add a response interceptor
-	instance.interceptors.response.use(
-		response => {
-			const { data } = response
-			if (data.errors) {
-				// hideLoadingPage()
-				return Promise.reject(data)
-			}
-			if (data.error_msg) {
-				// hideLoadingPage()
-				return Promise.reject(data)
-			}
-			if (data?.data && !data?.total && !data?.current_page) {
-				return data?.data
-			}
-			return data
-		},
-		error => {
-			// hideLoadingPage()
-			return Promise.reject(error)
-		}
-	)
-	return instance
-}
+  // Add a response interceptor
+  instance.interceptors.response.use(
+    (response) => {
+      const { data } = response;
+      if (data.errors) {
+        // hideLoadingPage()
+        return Promise.reject(data);
+      }
+      if (data.error_msg) {
+        // hideLoadingPage()
+        return Promise.reject(data);
+      }
+      if (data?.data && !data?.totalRecord && !data?.pageNumber) {
+        return data?.data;
+      }
+      return data;
+    },
+    (error) => {
+      // hideLoadingPage()
+      return Promise.reject(error);
+    }
+  );
+  return instance;
+};

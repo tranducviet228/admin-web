@@ -33,16 +33,8 @@ import CoreInput from "../../Input/CoreInput";
 const TablePaginationV2 = (props) => {
   const isMobile = useMediaQuery("(max-width:600px)");
 
-  const {
-    pageIndex,
-    pageSize,
-    total,
-    fetchData,
-    last_page,
-    per_page,
-    current_page,
-    params,
-  } = props;
+  const { pageIndex, pageSize, total, fetchData, pageNumber, params } = props;
+
   const [rowPerPages, setRowPerPages] = useState(pageSize ?? 10);
   const [page, setPage] = useState(pageIndex ?? 1);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -62,7 +54,7 @@ const TablePaginationV2 = (props) => {
   const open = Boolean(anchorEl);
   const { control, getValues, setValue } = useForm({
     defaultValues: {
-      jump_to_page: pageIndex ?? null,
+      jump_to_page: pageNumber ?? null,
     },
   });
 
@@ -115,7 +107,7 @@ const TablePaginationV2 = (props) => {
               });
             }}
             page={pageIndex ?? 1}
-            count={last_page ?? 1}
+            count={pageNumber ?? 1}
             showFirstButton
             showLastButton
             size={isMobile ? "small" : "medium"}
@@ -131,7 +123,7 @@ const TablePaginationV2 = (props) => {
           onKeyPress={(ev) => {
             if (ev.key === "Enter") {
               const toPage = getValues("jump_to_page");
-              if (toPage <= last_page && toPage > 0) {
+              if (toPage <= pageNumber && toPage > 0) {
                 fetchData({
                   ...params,
                   size: rowPerPages,

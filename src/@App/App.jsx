@@ -16,7 +16,12 @@
 import React from "react";
 import CoreAppTheme from "../@Core/components/CoreAppTheme";
 // import PropTypes from 'prop-types'
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import { appRouterConfig } from "./appConfig";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
