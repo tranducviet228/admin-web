@@ -22,6 +22,7 @@ import { LoadingButton } from "@mui/lab";
 import CoreAutocomplete from "../../../../../@Core/components/Input/CoreAutocomplete";
 
 const UserForm = (props) => {
+  const { isEdit } = props;
   const { methodForm, onSubmit } = useUserForm(props);
   const {
     control,
@@ -41,15 +42,17 @@ const UserForm = (props) => {
             required
           />
 
-          <CoreInput
-            label="Mật khẩu"
-            control={control}
-            name="password"
-            placeholder="Nhập mật khẩu"
-            className="w-full px-8 mb-12 sm:w-1/2"
-            required
-            type="password"
-          />
+          {!isEdit && (
+            <CoreInput
+              label="Mật khẩu"
+              control={control}
+              name="password"
+              placeholder="Nhập mật khẩu"
+              className="w-full px-8 mb-12 sm:w-1/2"
+              required
+              type="password"
+            />
+          )}
 
           <CoreAutocomplete
             label="Quyền"
@@ -75,7 +78,7 @@ const UserForm = (props) => {
             required
           />
           <CoreInput
-            label="Tên"
+            label="Tên đầy đủ"
             control={control}
             name="fullName"
             placeholder="Nhập tên đầy đủ"

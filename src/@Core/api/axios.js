@@ -49,7 +49,7 @@ export const createInstance = (baseUrl = null, middleware = () => {}) => {
   instance.interceptors.response.use(
     (response) => {
       const { data } = response;
-      if (data.errors) {
+      if (Array.isArray(data.errors) && data.errors?.length > 0) {
         // hideLoadingPage()
         return Promise.reject(data);
       }

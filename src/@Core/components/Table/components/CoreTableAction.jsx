@@ -1,9 +1,6 @@
-import { useConfirm } from "@Core/components/Confirm/CoreConfirm";
 import { IconButton, Tooltip, useTheme } from "@mui/material";
-import { useTranslation } from "react-i18next";
-
 import { BiEdit, BiShow, BiTrash } from "react-icons/bi";
-import RateReviewOutlinedIcon from "@mui/icons-material/RateReviewOutlined";
+import { useConfirm } from "../../Confirm/CoreConfirm";
 
 /*
  * Created Date: 04-09-2022, 9:42:53 am
@@ -20,7 +17,6 @@ import RateReviewOutlinedIcon from "@mui/icons-material/RateReviewOutlined";
  * ----------	---	----------------------------------------------------------
  */
 export const CoreActionEdit = ({ onClick = () => {}, disabled = false }) => {
-  const { t } = useTranslation("common");
   if (disabled) {
     return (
       <IconButton disabled color="primary">
@@ -29,27 +25,9 @@ export const CoreActionEdit = ({ onClick = () => {}, disabled = false }) => {
     );
   }
   return (
-    <Tooltip title={t("btn.edit")}>
+    <Tooltip title="Chỉnh sửa">
       <IconButton onClick={onClick} color="primary">
         <BiEdit />
-      </IconButton>
-    </Tooltip>
-  );
-};
-
-export const CoreActionReview = ({ onClick = () => {}, disabled = false }) => {
-  const { t } = useTranslation("common");
-  if (disabled) {
-    return (
-      <IconButton disabled color="primary">
-        <RateReviewOutlinedIcon />
-      </IconButton>
-    );
-  }
-  return (
-    <Tooltip title={t("btn.review")}>
-      <IconButton onClick={onClick} color="primary">
-        <RateReviewOutlinedIcon />
       </IconButton>
     </Tooltip>
   );
@@ -60,10 +38,9 @@ export const CoreActionView = ({
   title = null,
   placement,
 }) => {
-  const { t } = useTranslation("common");
   const theme = useTheme();
   return (
-    <Tooltip title={title ?? t("btn.view")} placement={placement}>
+    <Tooltip title={title ?? "Xem chi tiết"} placement={placement}>
       <IconButton
         style={{ color: theme.palette.success.main }}
         onClick={onClick}
@@ -78,12 +55,11 @@ export const CoreActionDelete = ({
   onConfirmDelete = () => {},
   disabled = false,
 }) => {
-  const { t } = useTranslation("common");
   const confirm = useConfirm();
 
   const handleClickDelete = () => {
     confirm({
-      content: t("table.delete_confirm"),
+      content: "Bạn có chắc chắn muốn xóa thông tin này không?",
       color: "error",
       onOk: onConfirmDelete,
       zIndex: 9999,
@@ -92,13 +68,13 @@ export const CoreActionDelete = ({
 
   if (disabled) {
     return (
-      <IconButton onClick={onClick} color="error" disabled={disabled}>
+      <IconButton color="error" disabled={disabled}>
         <BiTrash />
       </IconButton>
     );
   }
   return (
-    <Tooltip title={t("btn.delete")}>
+    <Tooltip title="Xóa">
       <IconButton onClick={handleClickDelete} color="error">
         <BiTrash />
       </IconButton>

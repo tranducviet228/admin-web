@@ -23,7 +23,6 @@ import { useNavigate } from "react-router-dom";
 export const useUserForm = (props) => {
   const { user, isEdit } = props;
 
-  console.log("============= isEdit", isEdit);
   const navigate = useNavigate();
   const methodForm = useForm({
     mode: "onTouched",
@@ -35,13 +34,16 @@ export const useUserForm = (props) => {
       id: user?.id ?? "",
       fullName: user?.fullName ?? "",
       phone: user?.phone ?? "",
-      roles: user?.roles ?? [],
+      roles: user?.roles?.map((item) => item?.name) ?? [],
     },
     resolver: yupResolver(
       Yup.object({
         email: Yup.string().required().email(),
         username: Yup.string().required(),
-        password: Yup.string().required(),
+        password: Yup.mixed().when("id", {
+          is: (val) => !val,
+          then: Yup.string().required().min(6).max(40),
+        }),
         fullName: Yup.string().required(),
         phone: Yup.string().required().phone(),
         roles: Yup.array().min(1),
@@ -52,8 +54,7 @@ export const useUserForm = (props) => {
   const onSubmit = methodForm.handleSubmit(
     async (data) => {
       try {
-        (await isEdit) ? userSerivce.save(data) : userSerivce.addUser(data);
-        console.log("============= data", data);
+        await (isEdit ? userSerivce.save(data) : userSerivce.addUser(data));
         navigate("/admin/user");
         successMsg(
           isEdit

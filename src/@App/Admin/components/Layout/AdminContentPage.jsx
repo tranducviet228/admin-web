@@ -32,7 +32,7 @@ const AdminContentPage = (props) => {
       {pageTitle && (
         <CardHeader
           title={
-            <Typography variant="h1" className="font-900">
+            <Typography variant="h3" className="uppercase font-400">
               {pageTitle}
             </Typography>
           }

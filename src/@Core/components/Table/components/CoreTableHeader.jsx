@@ -24,7 +24,7 @@ const TableHeaderRow = styled(TableRow)(({ theme }) => {
     "& th": {
       fontSize: 14,
       padding: 8,
-      fontWeight: 500,
+      fontWeight: 700,
       color: theme.palette.text.primary,
       "&:first-of-type": {
         paddingLeft: 20,

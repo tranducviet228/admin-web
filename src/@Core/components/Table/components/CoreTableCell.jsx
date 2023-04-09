@@ -20,6 +20,7 @@ import React from "react";
 const StyledTableCell = styled(TableCell)(() => ({
   fontSize: 14,
   padding: 8,
+  fontWeight: 400,
   "&:first-of-type": {
     paddingLeft: 20,
   },

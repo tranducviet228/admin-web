@@ -26,14 +26,14 @@ const UserProvider = (props) => {
     manual: true,
   });
 
-  const userTableHandler = useCoreTable(requestUsers);
+  const tableHandler = useCoreTable(requestUsers);
 
   useEffect(() => {
-    userTableHandler.handleFetchData();
+    tableHandler.handleFetchData();
   }, []);
 
   const data = {
-    userTableHandler,
+    tableHandler,
     ...props,
   };
 

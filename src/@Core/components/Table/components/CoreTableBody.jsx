@@ -17,20 +17,22 @@ import { TableBody, TableCell, TableRow } from "@mui/material";
 import { flexRender } from "@tanstack/react-table";
 import React from "react";
 import CoreTableCell from "./CoreTableCell";
+import { useCoreTableContext } from "../CoreTable";
 // import PropTypes from 'prop-types'
 
-const CoreTableBody = ({ table, loading }) => {
+const CoreTableBody = ({ loading }) => {
+  const { table } = useCoreTableContext();
+
   const renderRows = () => {
     const { rows } = table.getRowModel();
 
-    console.log("============= rows", rows);
     const allColumns = table.getAllColumns();
     if (rows.length === 0) {
       return (
         <TableRow>
           <TableCell
             align="center"
-            className="italic"
+            className="italic font-400"
             colSpan={allColumns.length}
           >
             {"Không có dữ liệu để hiển thị"}

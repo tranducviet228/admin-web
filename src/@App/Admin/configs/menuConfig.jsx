@@ -36,7 +36,7 @@ export const menuAdminConfig = [
     icon: <CategoryOutlinedIcon />,
   },
   {
-    title: "Quản lý file ảnh",
+    title: "Quản lý logo danh mục",
     url: ROUTER_ADMIN.fileImage.list,
     icon: <ImageOutlinedIcon />,
   },

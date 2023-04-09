@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo } from "react";
 import UserTable from "./components/UserTable";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AdminContentPage from "../../../components/Layout/AdminContentPage";
 import UserProvider from "./UserProvider";
+import UserFilterTable from "./components/UserFilterTable";
 
 const ListPage = (props) => {
   const navigate = useNavigate();
@@ -11,7 +12,12 @@ const ListPage = (props) => {
   return (
     <UserProvider>
       <AdminContentPage
-        pageTitle="Danh sách user"
+        pageTitle={
+          <Box className="flex items-center">
+            Danh sách user
+            <UserFilterTable />
+          </Box>
+        }
         headerAction={
           <Button
             variant="contained"

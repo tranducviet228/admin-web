@@ -43,7 +43,7 @@ const CoreTable = ({
       pageIndex,
       pageSize,
     }),
-    [pageIndex, pageSize]
+    [pageNumber, pageSize]
   );
 
   const columnTable = useMemo(() => {
@@ -77,6 +77,7 @@ const CoreTable = ({
             whiteSpace: "nowrap",
           },
           maxHeight: "calc(100vh - 300px)",
+          border: "1px solid #E0E0E0",
         }}
       >
         <Table sx={{ minWidth: 650 }} stickyHeader className="table">
@@ -88,7 +89,7 @@ const CoreTable = ({
           <CoreTableBody table={table} />
         </Table>
         {loading && (
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center z-99 table-loading">
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center z-99">
             <CircularProgress />
           </div>
         )}

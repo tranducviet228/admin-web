@@ -59,7 +59,7 @@ const TablePaginationV2 = (props) => {
   });
 
   return (
-    <Box className="flex flex-wrap items-center justify-between w-full px-10 my-10 md:flex-nowrap">
+    <Box className="flex flex-wrap items-center justify-between w-full px-10 my-6 md:flex-nowrap">
       <Box className="flex items-center justify-start w-auto mx-auto md:mx-0">
         <Typography>{"Số hàng hiển thị trên trang"}</Typography>
         <Button onClick={handleClick}>

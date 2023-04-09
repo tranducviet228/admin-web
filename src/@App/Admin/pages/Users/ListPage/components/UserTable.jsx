@@ -19,57 +19,79 @@ import { useAdminPageContext } from "../../../../components/Provider/AdminPagePr
 import CoreTable, {
   columnHelper,
 } from "../../../../../../@Core/components/Table/CoreTable";
-import { Box } from "@mui/material";
+import { Box, Chip } from "@mui/material";
+import {
+  CoreActionDelete,
+  CoreActionEdit,
+} from "../../../../../../@Core/components/Table/components/CoreTableAction";
+import { ROUTER_ADMIN } from "../../../../configs/constants";
 
 const UserTable = (props) => {
   const navigate = useNavigate();
-  const { userTableHandler } = useAdminPageContext();
+  const { tableHandler } = useAdminPageContext();
 
-  console.log("============= userTableHandler", userTableHandler);
+  const RoleOptions = [
+    { value: "ROLE_ADMIN", label: "Quyền Admin" },
+    { value: "ROLE_USER", label: "Quyền User" },
+  ];
+
   const columns = useMemo(() => {
     return [
       columnHelper.accessor("id", {
         cell: (info) => info.getValue(),
-        header: "abcasc",
+        header: "Id",
       }),
-      //   columnHelper.accessor("code", {
-      //     header: t("title.email"),
-      //   }),
-      //   columnHelper.accessor("name", {
-      //     header: t("title.name"),
-      //   }),
-      //   columnHelper.accessor("address", {
-      //     header: t("title.birthday"),
-      //   }),
-      //   columnHelper.accessor("phone", {
-      //     header: t("title.gender"),
-      //   }),
-      //   columnHelper.accessor("point", {
-      //     header: t("title.place"),
-      //   }),
-      //   columnHelper.accessor("action", {
-      //     header: t("title.action"),
-      //     cell: ({ row }) => {
-      //       const data = row.original;
-      //       return (
-      //         <div className="flex">
-      //           <CoreActionView
-      //             onClick={() => navigate(ROUTER_ADMIN.user.edit)}
-      //           />
-      //           <CoreActionEdit
-      //             onClick={() => navigate(ROUTER_ADMIN.user.edit)}
-      //           />
-      //           <CoreActionDelete />
-      //         </div>
-      //       );
-      //     },
-      //   }),
+      columnHelper.accessor("fullName", {
+        header: "Họ và tên",
+      }),
+      columnHelper.accessor("email", {
+        header: "Email",
+      }),
+      columnHelper.accessor("username", {
+        header: "Username",
+      }),
+      columnHelper.accessor("phone", {
+        header: "Số điện thoại",
+      }),
+      columnHelper.accessor("roles", {
+        header: "Quyền",
+        cell: (info) => (
+          <Box className="space-x-2">
+            {info.getValue().map((item) => (
+              <Chip
+                key={item?.id}
+                label={RoleOptions?.find((i) => i?.value === item?.name)?.label}
+                variant="outlined"
+              />
+            ))}
+          </Box>
+        ),
+      }),
+
+      columnHelper.accessor("action", {
+        header: "Hành động",
+        cell: ({ row }) => {
+          const data = row.original;
+          return (
+            <div className="flex">
+              <CoreActionEdit
+                onClick={() =>
+                  navigate(`${ROUTER_ADMIN.user.list}/${data?.id}`)
+                }
+              />
+              <CoreActionDelete
+                disabled={data?.roles?.find((i) => i?.name === "ROLE_ADMIN")}
+              />
+            </div>
+          );
+        },
+      }),
     ];
   }, []);
 
   return (
     <Box>
-      <CoreTable isShowPagination columns={columns} {...userTableHandler} />
+      <CoreTable isShowPagination columns={columns} {...tableHandler} />
     </Box>
   );
 };
