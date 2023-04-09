@@ -18,16 +18,17 @@ import React, { useEffect } from "react";
 import { userSerivce } from "../../../services/userService";
 import AdminPageProvider from "../../../components/Provider/AdminPageProvider";
 import useCoreTable from "../../../../../@Core/components/Table/hooks/useCoreTable";
+import { categorySerivce } from "../../../services/categoryService";
 import { errorMsg } from "../../../../../@Core/helper/Message";
 // import PropTypes from 'prop-types'
 
-const UserProvider = (props) => {
-  const requestUsers = useRequest(userSerivce.list, {
+const CategoryProvider = (props) => {
+  const requestCategory = useRequest(categorySerivce.list, {
     manual: true,
-    onError: () => errorMsg("Lấy danh sách user thất bại"),
+    onError: () => errorMsg("Lấy danh sách danh mục thu chi thất bại"),
   });
 
-  const tableHandler = useCoreTable(requestUsers);
+  const tableHandler = useCoreTable(requestCategory);
 
   useEffect(() => {
     tableHandler.handleFetchData();
@@ -41,4 +42,4 @@ const UserProvider = (props) => {
   return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>;
 };
 
-export default React.memo(UserProvider);
+export default React.memo(CategoryProvider);

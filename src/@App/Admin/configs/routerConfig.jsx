@@ -18,6 +18,10 @@ import React from "react";
 const LazyHomePage = React.lazy(() => import("../pages/HomePage"));
 const LazyUserList = React.lazy(() => import("../pages/Users/ListPage"));
 const LazyUserDetail = React.lazy(() => import("../pages/Users/DetailPage"));
+const LazyCategoryList = React.lazy(() => import("../pages/Category/ListPage"));
+const LazyCategoryDetail = React.lazy(() =>
+  import("../pages/Category/DetailPage")
+);
 
 // auth
 const LazyLogin = React.lazy(() => import("../pages/Auth/Login"));
@@ -41,5 +45,13 @@ export const routerAdminConfig = [
   {
     path: ROUTER_ADMIN.user.edit,
     element: <LazyUserDetail />,
+  },
+  {
+    path: ROUTER_ADMIN.category.list,
+    element: <LazyCategoryList />,
+  },
+  {
+    path: ROUTER_ADMIN.category.edit,
+    element: <LazyCategoryDetail />,
   },
 ];
