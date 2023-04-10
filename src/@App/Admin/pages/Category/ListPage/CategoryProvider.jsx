@@ -41,6 +41,7 @@ const CategoryProvider = (props) => {
   const data = {
     category,
     loadingCategory,
+    getCategory,
     ...props,
   };
 

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AdminContentPage from "../../../components/Layout/AdminContentPage";
 import CategoryProvider from "./CategoryProvider";
 import ListCategory from "./components/ListCategory";
+import CategoryFilter from "./components/CategoryFilter";
 
 const ListPage = (props) => {
   const navigate = useNavigate();
@@ -12,7 +13,10 @@ const ListPage = (props) => {
     <CategoryProvider>
       <AdminContentPage
         pageTitle={
-          <Box className="flex items-center">Danh sách danh mục thu chi</Box>
+          <Box className="flex items-center">
+            Danh sách danh mục thu chi
+            <CategoryFilter />
+          </Box>
         }
         headerAction={
           <Button

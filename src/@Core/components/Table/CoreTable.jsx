@@ -24,6 +24,7 @@ const CoreTable = ({
   pageSize = 10,
   pageIndex = 1,
   pageNumber = 1,
+  totalPage = 1,
   handleFetchData = () => {},
   loading = false,
   hasRowSelection = false,
@@ -89,7 +90,7 @@ const CoreTable = ({
           <CoreTableBody table={table} />
         </Table>
         {loading && (
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center z-99">
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center z-100">
             <CircularProgress />
           </div>
         )}
@@ -100,6 +101,7 @@ const CoreTable = ({
           pageSize={pageSize}
           pageNumber={pageNumber}
           total={total}
+          totalPage={totalPage}
           fetchData={handleFetchData}
           {...restProps}
         />

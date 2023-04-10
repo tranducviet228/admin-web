@@ -38,9 +38,9 @@ export const useCategoryForm = (props) => {
     resolver: yupResolver(
       Yup.object({
         name: Yup.string().trim().required().min(3),
-        description: Yup.string().trim().required().min(3),
+        // description: Yup.string().trim().required().min(3),
         categoryType: Yup.mixed().nullable().required(),
-        // logoImageID: Yup.mixed().nullable().required(),
+        logoImage: Yup.mixed().nullable().required(),
       })
     ),
   });

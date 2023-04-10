@@ -18,6 +18,7 @@ import Icon from "@mui/material/Icon";
 
 import { createContext, useCallback, useContext, useState } from "react";
 import CoreDialog from "../Dialog/CoreDialog";
+import { BiTrash } from "react-icons/bi";
 
 const ConfirmContext = createContext();
 
@@ -99,7 +100,7 @@ const CoreConfirmProvider = (props) => {
         dialogContent={
           <div className="flex">
             <Icon className="mr-8" color={config.color ?? "secondary"}>
-              {config.icon ?? "delete"}
+              {config.icon ?? <BiTrash />}
             </Icon>
             {config.content}
           </div>

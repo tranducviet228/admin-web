@@ -68,7 +68,7 @@ const CategoryForm = (props) => {
             className="w-full px-8 mb-12 sm:w-1/2"
             returnValueType="enum"
           />
-          <Box className="w-full px-8 mb-12 space-x-8 sm:w-1/2 flex items-center">
+          <Box className="flex items-center w-full px-8 mb-12 space-x-8 sm:w-1/2">
             <SelectCategoryLogo
               control={control}
               name="logoImage"
@@ -92,7 +92,6 @@ const CategoryForm = (props) => {
             name="description"
             placeholder="Nhập mô tả"
             className="w-full px-8 mb-12"
-            required
             multiline
             minRows={5}
           />

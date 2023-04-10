@@ -16,28 +16,25 @@
 import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAdminPageContext } from "../../../../components/Provider/AdminPageProvider";
-import { Box, Chip, CircularProgress } from "@mui/material";
+import { Box, Chip, CircularProgress, Skeleton } from "@mui/material";
+import CategoryItem from "./CategoryItem";
 
 const UserTable = (props) => {
   const navigate = useNavigate();
   const { category, loadingCategory } = useAdminPageContext();
-  const formatCategory = category
-    ?.filter((i) => i?.parentId === 0)
-    .map((i) => {
-      return {
-        ...i,
-        categoryChildren: category?.filter((x) => x?.id === i?.id),
-      };
-    });
 
-  console.log("============= formatCategory", formatCategory);
+  console.log("============= category", category);
 
-  return loadingCategory ? (
-    <Box className="mt-40 text-center">
-      <CircularProgress />
+  return (
+    <Box className="h-[700px] w-full sm:w-4/5 mx-auto overflow-auto">
+      {loadingCategory
+        ? [1, 2, 3, 4, 5, 6].map((item) => (
+            <Skeleton key={item} className="py-12 mb-8" variant="rectangular" />
+          ))
+        : category?.map((item) => {
+            return <CategoryItem key={item?.id} item={item} />;
+          })}
     </Box>
-  ) : (
-    <Box>list</Box>
   );
 };
 

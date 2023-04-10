@@ -33,7 +33,15 @@ import CoreInput from "../../Input/CoreInput";
 const TablePaginationV2 = (props) => {
   const isMobile = useMediaQuery("(max-width:600px)");
 
-  const { pageIndex, pageSize, total, fetchData, pageNumber, params } = props;
+  const {
+    pageIndex,
+    pageSize,
+    total,
+    fetchData,
+    pageNumber,
+    params,
+    totalPage,
+  } = props;
 
   const [rowPerPages, setRowPerPages] = useState(pageSize ?? 10);
   const [page, setPage] = useState(pageIndex ?? 1);
@@ -107,7 +115,7 @@ const TablePaginationV2 = (props) => {
               });
             }}
             page={pageIndex ?? 1}
-            count={pageNumber ?? 1}
+            count={totalPage}
             showFirstButton
             showLastButton
             size={isMobile ? "small" : "medium"}
