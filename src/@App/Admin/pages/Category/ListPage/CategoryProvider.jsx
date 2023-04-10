@@ -23,19 +23,24 @@ import { errorMsg } from "../../../../../@Core/helper/Message";
 // import PropTypes from 'prop-types'
 
 const CategoryProvider = (props) => {
-  const requestCategory = useRequest(categorySerivce.list, {
+  const requestCategory = useRequest(categorySerivce.getAllCategory, {
     manual: true,
     onError: () => errorMsg("Lấy danh sách danh mục thu chi thất bại"),
   });
 
-  const tableHandler = useCoreTable(requestCategory);
+  const {
+    data: category,
+    run: getCategory,
+    loading: loadingCategory,
+  } = requestCategory;
 
   useEffect(() => {
-    tableHandler.handleFetchData({ parentId: 0 });
+    getCategory();
   }, []);
 
   const data = {
-    tableHandler,
+    category,
+    loadingCategory,
     ...props,
   };
 

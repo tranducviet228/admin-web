@@ -16,13 +16,29 @@
 import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAdminPageContext } from "../../../../components/Provider/AdminPageProvider";
-import { Box, Chip } from "@mui/material";
+import { Box, Chip, CircularProgress } from "@mui/material";
 
 const UserTable = (props) => {
   const navigate = useNavigate();
-  const { tableHandler } = useAdminPageContext();
+  const { category, loadingCategory } = useAdminPageContext();
+  const formatCategory = category
+    ?.filter((i) => i?.parentId === 0)
+    .map((i) => {
+      return {
+        ...i,
+        categoryChildren: category?.filter((x) => x?.id === i?.id),
+      };
+    });
 
-  return <Box>list</Box>;
+  console.log("============= formatCategory", formatCategory);
+
+  return loadingCategory ? (
+    <Box className="mt-40 text-center">
+      <CircularProgress />
+    </Box>
+  ) : (
+    <Box>list</Box>
+  );
 };
 
 //ListSpotTable.defaultProps = {}
