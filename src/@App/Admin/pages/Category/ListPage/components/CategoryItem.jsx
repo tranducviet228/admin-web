@@ -29,7 +29,7 @@ const CategoryItem = (props) => {
           onConfirmDelete={async () => {
             try {
               await categorySerivce.delete(id);
-              getCategory();
+              getCategory({ type: "EXPENSE" });
               successMsg("Xóa danh mục thành công");
             } catch (error) {
               errorMsg("Xóa danh mục thất bại");
