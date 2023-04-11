@@ -34,10 +34,6 @@ const CategoryProvider = (props) => {
     loading: loadingCategory,
   } = requestCategory;
 
-  useEffect(() => {
-    getCategory();
-  }, []);
-
   const data = {
     category,
     loadingCategory,

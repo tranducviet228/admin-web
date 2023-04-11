@@ -1,5 +1,5 @@
 import { useDebounce, useUpdateEffect } from "ahooks";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import CoreInput from "../../../../../../@Core/components/Input/CoreInput";
 import { useAdminPageContext } from "../../../../components/Provider/AdminPageProvider";
@@ -11,15 +11,15 @@ const CategoryFilter = (props) => {
   const { control, watch } = useForm({
     defaultValues: {
       search: "",
-      type: null,
+      type: "EXPENSE",
     },
   });
 
   const search = useDebounce(watch("search"), 500);
   const type = watch("type");
 
-  useUpdateEffect(() => {
-    getCategory({ search });
+  useEffect(() => {
+    getCategory({ search, type });
   }, [search, type]);
   return (
     <>
