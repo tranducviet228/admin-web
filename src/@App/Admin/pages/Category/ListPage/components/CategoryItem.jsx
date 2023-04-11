@@ -43,12 +43,12 @@ const CategoryItem = (props) => {
   const renderCategoryChildren = () => {
     return Array.isArray(item?.childCategory) &&
       item?.childCategory?.length > 0 ? (
-      <Box>
+      <Box className="ml-20">
         {item?.childCategory?.map((children) => (
           <Box
             key={item?.id}
-            className="flex items-center justify-between py-4 pl-20 pr-8"
-            sx={{ backgroundColor: "#E5EEE7" }}
+            className="flex items-center justify-between py-4 pl-8 pr-8 "
+            sx={{ backgroundColor: "#E5EEE7", borderRadius: "12px" }}
           >
             <Box className="flex items-center">
               <img
@@ -71,10 +71,10 @@ const CategoryItem = (props) => {
     );
   };
   return (
-    <Box className="mb-4">
+    <Box className="mb-8">
       <Box
-        className="flex items-center justify-between px-8 py-2 cursor-pointer rounded-4 "
-        sx={{ backgroundColor: "#CCDECF" }}
+        className="flex items-center justify-between px-8 py-4 shadow-md cursor-pointer shadow-gray-300"
+        sx={{ backgroundColor: "#CCDECF", borderRadius: "12px" }}
       >
         <Box className="flex items-center">
           <img

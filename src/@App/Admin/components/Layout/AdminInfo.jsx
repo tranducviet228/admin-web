@@ -15,6 +15,8 @@ const AdminInfo = ({ color }) => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  const authToken = Cookies.get("ACCOUNT_INFO");
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -83,7 +85,7 @@ const AdminInfo = ({ color }) => {
               }}
               component="span"
             >
-              Admin User
+              {authToken ? JSON.parse(authToken)?.username : null}
             </Box>
             {/* <Box
 							sx={{
