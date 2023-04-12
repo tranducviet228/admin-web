@@ -39,74 +39,33 @@ const AdminInfo = ({ color }) => {
       <Box
         onClick={handleClick}
         sx={{
-          py: 3,
-          px: 3,
-          display: "flex",
-          alignItems: "center",
           cursor: "pointer",
         }}
-        className="user-info-view"
+        className="text-center"
       >
-        <Box sx={{ py: 0.5 }}>
-          <Avatar
-            sx={{
-              height: 40,
-              width: 40,
-              fontSize: 24,
-              backgroundColor: orange[500],
-            }}
-            src="https://khoinguonsangtao.vn/wp-content/uploads/2022/09/hinh-anh-avatar-ff-ngau.jpg"
-          />
-        </Box>
+        <Avatar
+          sx={{
+            height: 100,
+            width: 100,
+            fontSize: 24,
+            backgroundColor: orange[500],
+          }}
+          className="mx-auto mb-4"
+          src="https://img.freepik.com/premium-psd/3d-male-cute-cartoon-character-avatar-isolated-3d-rendering_235528-1280.jpg?w=826"
+        />
         <Box
           sx={{
-            width: { xs: "calc(100% - 62px)", xl: "calc(100% - 72px)" },
-            ml: 2,
-            // color: color
+            mb: 0,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            fontSize: 16,
+            fontWeight: 700,
+            color: "black",
           }}
-          className="user-info"
+          component="span"
         >
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box
-              sx={{
-                mb: 0,
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap",
-                fontSize: 16,
-                fontWeight: 700,
-                color: "black",
-              }}
-              component="span"
-            >
-              {authToken ? JSON.parse(authToken)?.username : null}
-            </Box>
-            {/* <Box
-							sx={{
-								ml: 3,
-								color: 'inherit',
-								display: 'flex'
-							}}
-						>
-							<ExpandMoreIcon />
-						</Box> */}
-          </Box>
-          <Box
-            sx={{
-              mt: -0.5,
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-              color: "black",
-            }}
-          >
-            ADMIN
-          </Box>
+          {authToken ? JSON.parse(authToken)?.username : null}
         </Box>
       </Box>
       <Menu

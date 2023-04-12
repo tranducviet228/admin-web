@@ -20,6 +20,7 @@ import {
   Menu,
   MenuItem,
   Pagination,
+  TablePagination,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -43,8 +44,8 @@ const TablePaginationV2 = (props) => {
     totalPage,
   } = props;
 
-  const [rowPerPages, setRowPerPages] = useState(pageSize ?? 10);
-  const [page, setPage] = useState(pageIndex ?? 1);
+  const [rowsPerPage, setRowsPerPage] = useState(pageSize ?? 10);
+  const [page, setPage] = useState(pageIndex - 1 ?? 0);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -66,12 +67,43 @@ const TablePaginationV2 = (props) => {
     },
   });
 
+  const handleChangePage = (event, newPage) => {
+    console.log("============= newPage", newPage);
+    setPage(newPage);
+    fetchData({
+      ...params,
+      size: rowsPerPage,
+      page: newPage + 1,
+    });
+  };
+
   return (
-    <Box className="flex flex-wrap items-center justify-between w-full px-10 my-6 md:flex-nowrap">
-      <Box className="flex items-center justify-start w-auto mx-auto md:mx-0">
+    <Box className="text-right">
+      <TablePagination
+        component="div"
+        count={total}
+        page={page}
+        onPageChange={handleChangePage}
+        rowsPerPage={rowsPerPage}
+        labelRowsPerPage="Số hàng hiển thị trên trang: "
+        labelDisplayedRows={({ from, to, count }) => {
+          return `${from}–${to} / ${count !== -1 ? count : `more than ${to}`}`;
+        }}
+        onRowsPerPageChange={async (event) => {
+          const res = await fetchData({
+            ...params,
+            size: event.target.value,
+            page: 1,
+          });
+          console.log("============= res", res);
+          setPage(0);
+          setRowsPerPage(event.target.value);
+        }}
+      />
+      {/* <Box className="flex items-center justify-start w-auto mx-auto md:mx-0">
         <Typography>{"Số hàng hiển thị trên trang"}</Typography>
         <Button onClick={handleClick}>
-          {rowPerPages} <KeyboardArrowDown />
+          {rowsPerPage} <KeyboardArrowDown />
         </Button>
         {!isMobile ? (
           <Typography>{`của tổng số ${total}`}</Typography>
@@ -92,7 +124,7 @@ const TablePaginationV2 = (props) => {
                     page: 1,
                   });
                   setPage(res?.page);
-                  setRowPerPages(item);
+                  setRowsPerPage(item);
                 }}
               >
                 {item}
@@ -110,7 +142,7 @@ const TablePaginationV2 = (props) => {
               setPage(value);
               fetchData({
                 ...params,
-                size: rowPerPages,
+                size: rowsPerPage,
                 page: value,
               });
             }}
@@ -134,7 +166,7 @@ const TablePaginationV2 = (props) => {
               if (toPage <= pageNumber && toPage > 0) {
                 fetchData({
                   ...params,
-                  size: rowPerPages,
+                  size: rowsPerPage,
                   page: toPage,
                 });
                 setPage(toPage);
@@ -147,7 +179,7 @@ const TablePaginationV2 = (props) => {
           className="w-60"
           size="small"
         />
-      </Box>
+      </Box> */}
     </Box>
   );
 };

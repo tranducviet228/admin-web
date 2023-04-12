@@ -15,13 +15,13 @@ import { errorMsg, successMsg } from "../../../../@Core/helper/Message";
 
 const FontTitle = ({ variant = "h1", title = "" }) => {
   return (
-    <Typography className="text-[30px]" variant={variant}>
+    <Typography className="text-[30px]" color="primary" variant={variant}>
       {title}
     </Typography>
   );
 };
 const renderFont = () => {
-  return <FontTitle variant="h2" title="Đăng nhập Admin" />;
+  return <FontTitle variant="h1" title="Login Account" />;
 };
 
 const Login = () => {
@@ -114,8 +114,12 @@ const Login = () => {
   };
   return (
     <div>
-      <div className="flex justify-center pt-40">
-        <Card className="w-1/2 p-24 text-center shadow-none">
+      <div className="flex justify-center pt-20">
+        <Card className="w-1/2 px-24 py-8 text-center shadow-none" raised>
+          <img
+            className="w-[450px] mx-auto"
+            src="https://img.freepik.com/premium-vector/puzzle-line-icon-man-near-puzzles-solved-problem-creative-thinking-success-motivation-concept-glassmorphism-style-vector-line-icon-business-advertising_399089-4287.jpg?w=826"
+          />
           {renderFont()}
           {renderFormLogin()}
         </Card>

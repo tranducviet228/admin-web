@@ -42,11 +42,11 @@ const AdminCmsLayout = (props) => {
 
   // const xsrfToken = !!Cookies.get("XSRF-TOKEN");
 
-  useEffect(() => {
-    if (!cmsInfor) {
-      return navigate(`/admin/login`);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!cmsInfor) {
+  //     return navigate(`/admin/login`);
+  //   }
+  // }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -74,59 +74,8 @@ const AdminCmsLayout = (props) => {
           <img
             className="aspect-video"
             style={{ height: "60px" }}
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgB80IUrYc7YRX8rQwNaU_DlAzPff0XsGTcw&usqp=CAU"
+            src="https://img.freepik.com/free-vector/flat-design-cms-illustration_23-2148825220.jpg?w=1380&t=st=1681319053~exp=1681319653~hmac=dc559b584172cd51e0c362ad6c33183a8714cd923d6222b2d91e48ba1db60ea7"
           />
-          <Box className="ml-auto">
-            <Box
-              sx={{
-                ml: { sm: 4 },
-                mr: { xs: 4, sm: 0 },
-                minWidth: { md: 220 },
-                "& .user-info-view": {
-                  p: 0,
-                },
-              }}
-            >
-              <AdminInfo />
-            </Box>
-            {/* <Box>
-              <Button
-                variant="outlined"
-                color="secondary"
-                startIcon={<BiUserCircle />}
-                onClick={() => navigate("/cms/admin/login")}
-              >
-                Đăng nhập
-              </Button>
-            </Box> */}
-          </Box>
-          {/* {isAuthenticated ? (
-						<Box
-							sx={{
-								ml: { sm: 4 },
-								mr: { xs: 4, sm: 0 },
-								minWidth: { md: 220 },
-								'& .user-info-view': {
-									p: 0
-								},
-								'& .user-info': {
-									display: { xs: 'none', md: 'block' }
-								}
-							}}
-						>
-							<UserInfo />
-						</Box>
-					) : (
-						<Box>
-							<Button
-								variant="outlined"
-								startIcon={<BiUserCircle />}
-								onClick={() => Router.push('/user/login')}
-							>
-								{tAuth('login')}
-							</Button>
-						</Box>
-					)} */}
         </Toolbar>
       </AppBar>
       <Box

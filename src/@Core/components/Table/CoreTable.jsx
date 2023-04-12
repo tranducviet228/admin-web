@@ -38,7 +38,6 @@ const CoreTable = ({
     hasRowSelection,
   });
 
-  console.log("============= data", data);
   const pagination = React.useMemo(
     () => ({
       pageIndex,

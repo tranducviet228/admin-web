@@ -54,6 +54,7 @@ const CategoryForm = (props) => {
             placeholder="Chọn kiểu danh mục"
             className="w-full px-8 mb-12 sm:w-1/2"
             returnValueType="enum"
+            required
             options={[
               { value: "EXPENSE", label: "Chi tiêu" },
               { value: "INCOME", label: "Thu nhập" },
@@ -75,6 +76,7 @@ const CategoryForm = (props) => {
               label="Logo danh mục"
               placeholder="Chọn logo danh mục"
               className="w-full sm:w-1/2"
+              required
             />
 
             {logoImage && (

@@ -40,8 +40,11 @@ const CoreTableBody = ({ loading }) => {
         </TableRow>
       );
     }
-    return rows.map((row) => (
-      <TableRow key={row.id}>
+    return rows.map((row, index) => (
+      <TableRow
+        key={row.id}
+        className={index % 2 ? "bg-[#f0f0f0]" : "bg-white"}
+      >
         {row.getVisibleCells().map((cell) => (
           <CoreTableCell key={cell.id}>
             {flexRender(cell.column.columnDef.cell, cell.getContext())}

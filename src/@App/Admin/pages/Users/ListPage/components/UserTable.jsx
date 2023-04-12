@@ -62,6 +62,7 @@ const UserTable = (props) => {
                 key={item?.id}
                 label={RoleOptions?.find((i) => i?.value === item?.name)?.label}
                 variant="outlined"
+                color="primary"
               />
             ))}
           </Box>
@@ -80,7 +81,7 @@ const UserTable = (props) => {
                 }
               />
               <CoreActionDelete
-                disabled={data?.roles?.find((i) => i?.name === "ROLE_ADMIN")}
+                disabled={!!data?.roles?.find((i) => i?.name === "ROLE_ADMIN")}
                 onConfirmDelete={() => handleDelete(data?.id)}
               />
             </div>

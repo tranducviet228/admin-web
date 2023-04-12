@@ -69,14 +69,14 @@ const defaultTheme = createTheme({
     },
     subtitle2: {
       fontSize: "1.4rem",
-      fontWeight: 700,
+      fontWeight: 400,
     },
     body1: {
       fontSize: "1.3rem",
     },
     body2: {
       fontSize: "1.4rem",
-      fontWeight: 700,
+      fontWeight: 400,
     },
     caption: {
       fontSize: "1.2rem",

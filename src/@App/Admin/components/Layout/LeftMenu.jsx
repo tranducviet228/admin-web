@@ -35,6 +35,7 @@ import LeftMenuItem from "../Menu/LeftMenuItem";
 import { menuAdminConfig } from "../../configs/menuConfig";
 import LeftMenuItemCollapse from "../Menu/LeftMenuItemCollapse";
 import { authService } from "../../services/authService";
+import AdminInfo from "./AdminInfo";
 
 const LeftMenu = (props) => {
   const navigate = useNavigate();
@@ -60,6 +61,9 @@ const LeftMenu = (props) => {
     <Box>
       <Toolbar />
       <Divider />
+      <Box className="my-8">
+        <AdminInfo />
+      </Box>
       <List>
         {menuAdminConfig.map((item, index) => {
           if (item?.type === "collapse") {

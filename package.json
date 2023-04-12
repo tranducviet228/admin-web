@@ -39,7 +39,9 @@
     "react-icons": "^4.4.0",
     "react-icons-all": "^4.5.1",
     "react-router-dom": "^6.4.2",
+    "react-slick": "^0.29.0",
     "react-toastify": "^9.0.8",
+    "slick-carousel": "^1.8.1",
     "vite-jsconfig-paths": "^2.0.1",
     "yup": "^0.32.11"
   },
