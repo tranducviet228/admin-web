@@ -67,7 +67,7 @@ const CategoryItem = (props) => {
         ))}
       </Box>
     ) : (
-      <Box className="italic text-center">Không có danh mục con nào</Box>
+      <Box className="mt-4 italic text-center">Không có danh mục con nào</Box>
     );
   };
   return (

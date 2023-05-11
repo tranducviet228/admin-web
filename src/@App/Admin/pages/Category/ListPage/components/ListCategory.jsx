@@ -31,9 +31,11 @@ const UserTable = (props) => {
         ? [1, 2, 3, 4, 5, 6].map((item) => (
             <Skeleton key={item} className="py-12 mb-8" variant="rectangular" />
           ))
-        : category?.map((item) => {
+        : Array.isArray(category?.content) && category?.content?.length > 0
+        ? category?.content?.map((item) => {
             return <CategoryItem key={item?.id} item={item} />;
-          })}
+          })
+        : null}
     </Box>
   );
 };

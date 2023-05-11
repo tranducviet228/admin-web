@@ -37,6 +37,7 @@ const CategoryFilter = (props) => {
         label="Type"
         placeholder="Chọn type"
         className="w-[200px]"
+        disableClearable
         size="small"
         returnValueType="enum"
         options={[
