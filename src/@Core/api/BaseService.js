@@ -19,7 +19,7 @@ export const DEFAULT_RESPONSE = {
   size: 10,
 };
 class BaseService {
-  BASE_URL = "https://expensemanagement-production.up.railway.app";
+  BASE_URL = "http://159.223.40.101:8081";
 
   BASE_ENDPOINT = "/api/v1";
 
